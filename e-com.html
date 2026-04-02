@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="./react-basics.js"></script>
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function Card({item, price, discountPrice, img}){
+        return(
+          <div>
+            <img src={img} alt="" width="100"/>
+            <p>{item}</p>
+            {!discountPrice ? (
+              <p>Price: {price}</p>
+              ) : 
+              (
+                <>
+                  <p><del>Price: {price}</del></p>
+                  <p>discountPrice: $5.45</p>
+                </>
+              )            
+            }
+            <button>Add to Cart</button>
+          </div>
+        );
+      }
+      function App(){
+        return(
+          <>
+            <Card 
+              item="Cotton socks" 
+              price="$10.90" 
+              discountPrice = "3" 
+              img="cotton-socks.png" 
+            />
+            <Card 
+              item="Tennis balls" 
+              price="$6.00" 
+              img="plain-t-shirt.png"
+            />
+            <Card 
+              item="plain T-Shirt" 
+              price="$7.99" 
+              img="tennis-balls.png"
+            />
+          </>  
+          
+        );
+      }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>
